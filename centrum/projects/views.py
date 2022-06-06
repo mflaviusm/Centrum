@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 def projects(request):
-    return HttpResponse('Testing path')
+    return render(request, 'projects.html')
 
 
 def project(request, pk):
