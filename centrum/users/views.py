@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import Profile, Message
+from .models import Profile
 from .utils import searchProfiles, paginateProfiles
 
 
