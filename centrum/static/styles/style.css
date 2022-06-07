@@ -562,6 +562,79 @@ img {
 }
 
 /*=======================
+  Account Settings
+========================*/
+
+.settingsPage .dev > .settings__btn {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+.settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings__title {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-sub);
+}
+
+.settings__table {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  padding: 0 3rem;
+  background: var(--color-white);
+}
+
+.settings__table tr {
+  width: 100%;
+}
+
+.settings__table tr > td {
+  padding: 2rem 0;
+}
+
+.settings__table tr:not(:last-child) td {
+  border-bottom: 2px solid var(--color-white-light);
+}
+
+.settings__thumbnail {
+  width: 23%;
+  min-width: 10rem;
+}
+
+.settings__thumbnail img {
+  padding-right: 3rem;
+  height: 15rem;
+  object-fit: contain;
+}
+
+.settings__tableInfo{
+  width: 100%;
+}
+
+.settings__tableInfo h4,
+.settings__tableInfo a {
+  padding-right: 1rem;
+  width: auto;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-sub);
+}
+
+.settings__tableInfo p {
+  font-size: 1.4rem;
+}
+
+.settings__tableActions {
+  text-align: right;
+}
+
+/*=======================
   Login/SignUp
 ========================*/
 
@@ -639,4 +712,152 @@ img {
 .auth .auth__alternative a {
   font-size: 2rem;
   font-weight: 500;
+}
+
+/*=======================
+  Inbox
+========================*/
+
+.inbox {
+  height: 90vh;
+}
+
+.inbox__title,
+.inbox__title span {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-sub);
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.inbox__title span {
+  color: var(--color-main);
+}
+
+.messages {
+  list-style: none;
+  background: var(--color-white);
+  padding: 0.5rem 3rem;
+  border: 2px solid var(--color-light);
+  border-radius: 0.7rem;
+}
+
+.message {
+  padding: 2.5rem 0;
+}
+
+.message > a span {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.message.message--unread a span {
+  font-weight: 700;
+  color: var(--color-sub);
+}
+
+.message:not(:last-child) {
+  border-bottom: 2px solid var(--color-white-light);
+}
+
+.message > a {
+  display: flex;
+  gap: 1rem;
+}
+
+.message__author,
+.message__date {
+  flex-basis: 25%;
+}
+
+.message__subject {
+  flex-basis: 50%;
+}
+
+.message__date {
+  text-align: right;
+}
+
+/*=======================
+  Single Message
+========================*/
+
+.messagePage .message {
+  list-style: none;
+  background: var(--color-white);
+  padding: 3.5rem 5rem;
+  border: 2px solid var(--color-light);
+  border-radius: 0.7rem;
+}
+
+.messagePage .message__subject {
+  font-size: 2.8rem;
+  color: var(--color-sub);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.messagePage .message__author {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.messagePage .message__date {
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.backButton {
+  background: var(--color-main-light);
+  color: var(--color-main);
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.backButton i {
+  font-size: 1.8rem;
+}
+
+
+/*=======================
+  Form Page
+========================*/
+
+.formPage .formWrapper {
+  list-style: none;
+  background: var(--color-white);
+  padding: 3.5rem 5rem;
+  border: 2px solid var(--color-light);
+  border-radius: 0.7rem;
+}
+
+.formPage .formWrapper__subject {
+  font-size: 2.8rem;
+  color: var(--color-sub);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+
+
+/*=======================
+  Fixed Position Alerts Wrapper
+========================*/
+
+.alert {
+  position: fixed;
+  left: 50%;
+  top: 120px;
+  transform: translate(-50%, -50%);
+
+
+  z-index: 99999;
 }
