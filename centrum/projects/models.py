@@ -1,5 +1,5 @@
-from django.db import models
 import uuid
+from django.db import models
 
 
 class Project(models.Model):
@@ -11,7 +11,7 @@ class Project(models.Model):
     source_link = models.CharField(max_length=1000)
     vote_total = models.IntegerField(default=0)
     vote_ratio = models.IntegerField(default=0)
-    # tags = 
+    tags = models.ManyToManyField('Tag', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
@@ -34,8 +34,18 @@ class Review(models.Model):
     value = models.CharField(max_length=50, choices=VOTE_TYPE)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    id = models.UUIDField(default=uuid.uuid4, unique=True,
-                            primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,
+                          editable=False)
 
     def __str__(self):
         return self.value
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.name
