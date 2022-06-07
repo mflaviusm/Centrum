@@ -1,35 +1,39 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-
-projectsList = [
-    {
-        'id': '1',
-        'title': 'Econ',
-        'description': 'Project about e-business ideas.'
-    },
-    {
-        'id': '2',
-        'title': 'MarketMe',
-        'description': 'Website for professionals to showcast their work'
-    },
-    {
-        'id': '3',
-        'title': 'Munchy',
-        'description': 'A blog for gourmets to discuss everything food related.'
-    }
-]
+from django.shortcuts import render, redirect
+from .models import Project
+from .forms import ProjectForm
 
 
 def projects(request):
-    item = 'projects'
-    number = 10
-    context = {'item': item, 'number': number, 'projects': projectsList}
+    projects = Project.objects.all()
+    context = {'projects': projects}
     return render(request, 'projects/projects.html', context)
 
 
 def project(request, pk):
-    projectNumber = None
-    for i in projectsList:
-        if i['id'] == pk:
-            projectNumber = i
-    return render(request, 'projects/individual-project.html', {'project': projectNumber})
+    projectObj = Project.objects.get(id=pk)
+    context = {'project': projectObj}
+    return render(request, 'projects/individual-project.html', context)
+
+
+def createProject(request):
+    form = ProjectForm()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+
+    context = {'form': form}
+    return render(request, 'projects/project-form.html', context)
+
+
+def updateProject(request, pk):
+    project = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+
+    context = {'form': form}
+    return render(request, 'projects/project-form.html', context)

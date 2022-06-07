@@ -6,6 +6,8 @@
     {% for project in projects %}
         <li>Title:{{project.title}}</li>
         <li>Description:{{project.description}}</li>
+        <li><a href="{% url 'project' project.id %}"> Go To Project </a></li>
+        <li><a href="{% url 'update-project' project.id %}"> Edit</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
